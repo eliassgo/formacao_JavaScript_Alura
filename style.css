@@ -19,6 +19,15 @@ body {
     font-family: var(--font-family);
 }
 
+.game-over {
+    background-color: #000;
+    color: #fff;
+}
+
+.diplay-none {
+    display: none;
+}
+
 h1 {
     font-size: 5em;
 }

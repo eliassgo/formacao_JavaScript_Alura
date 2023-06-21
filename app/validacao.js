@@ -4,9 +4,22 @@ function verificaSeOChutePossuiUmValorValido(chute) {
     const numero = +chute // Transformando o número em inteiro 
 
     // Verificações 
+    if (verificaGameOver(numero)) {
+        document.body.classList.add("game-over")
+        document.body.innerHTML = `
+        <h1>GAME OVER</h1>
+        <button id="jogar-novamente" class="btn-jogar">Jogar Novamento</button>`
+    }
     if (chuteForInvalido(numero)) {
-        elementoChute.innerHTML += '<div> Valor inválido </div>'
-        return //Não executa mais nada da função
+        if (chute.toUpperCase() === "GAME OVER") {
+            document.body.classList.add("game-over")
+            document.body.innerHTML = `
+        <h1>GAME OVER</h1>
+        <button id="jogar-novamente" class="btn-jogar">Jogar Novamento</button>`
+        } else {
+            elementoChute.innerHTML += '<div> Valor inválido </div>'
+            return //Não executa mais nada da função
+        }
     }
 
     if (numMaiorOuMenoPermitido(numero)) {
@@ -35,7 +48,6 @@ function verificaSeOChutePossuiUmValorValido(chute) {
 function chuteForInvalido(numero) {
     return Number.isNaN(numero);
 }
-
 function numMaiorOuMenoPermitido(numero) {
     return numero > maiorValor || numero < menorValor;
 }
